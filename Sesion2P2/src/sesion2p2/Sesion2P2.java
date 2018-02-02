@@ -109,7 +109,7 @@ public class Sesion2P2 {
                                 }
                                 if (Integer.parseInt(index) < lstDetectives.size()) {
                                     int mejorDt = mejorNivel(lstDetectives);
-                                    
+                                    lstDetectives.remove(index);
                                 }
                                 break;
 
