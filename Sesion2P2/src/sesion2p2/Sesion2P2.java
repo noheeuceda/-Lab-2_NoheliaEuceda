@@ -174,7 +174,7 @@ public class Sesion2P2 {
                                 case 2:
                                     for (detective dt : lstDetectives) {
                                         if (dt.getCodigoDtcv() == codigo) {
-                                            System.out.println(dt.toString());
+                                            JOptionPane.showMessageDialog(null, dt.toString());
                                         }
                                     }
                                     break;
@@ -232,9 +232,12 @@ public class Sesion2P2 {
                                 case 5:
                                     for (Caso cso : lstCasos) {
                                         if (cso.getCodDetective()==codigo) {
-                                            
+                                            JOptionPane.showMessageDialog(null, cso.toString());
                                         }
                                     }
+                                    break;
+                                case 6: 
+                                    
                                     break;
                             }
                         }
