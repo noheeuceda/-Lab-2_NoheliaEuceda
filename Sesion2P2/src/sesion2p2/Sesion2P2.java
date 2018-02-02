@@ -109,7 +109,7 @@ public class Sesion2P2 {
                                 }
                                 if (Integer.parseInt(index) < lstDetectives.size()) {
                                     int mejorDt = mejorNivel(lstDetectives);
-
+                                    
                                 }
                                 break;
 
@@ -135,7 +135,7 @@ public class Sesion2P2 {
                             while (verificaNum(opt)) {
                                 JOptionPane.showMessageDialog(null, "Numero Invalido, ingrese de nuevo");
                                 opt = JOptionPane.showInputDialog(null, "Menú Usuarios: \n 1. Modificar datos \n 2.Listar datos \n 3.Registrar Caso "
-                                        + "\n 4. Modificar Caso \n 5.Listar Casos \n 6.Enviar Mensaje \n 7.Listar mensajes");
+                                        + "\n 4. Modificar Caso \n 5.Listar Casos \n 6.Enviar Mensaje \n 7.Listar mensajes \n 8. LogOut");
                             }
                             boolean p, k;
                             int num;
@@ -276,6 +276,12 @@ public class Sesion2P2 {
                                         }
                                     }
                                     break;
+                                case 8:
+                                    res = 'n';
+                                    break;
+                                default:
+                                    JOptionPane.showMessageDialog(null, "Opcion Incorrecta");
+                                    
                             }
                         }
 
