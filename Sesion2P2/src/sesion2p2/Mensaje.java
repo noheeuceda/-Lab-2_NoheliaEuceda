@@ -59,7 +59,7 @@ public class Mensaje {
 
     @Override
     public String toString() {
-        return "Mensaje{" + "emisor=" + emisor + ", receptor=" + receptor + ", contenido=" + contenido + ", nivelPrioridad=" + nivelPrioridad + '}';
+        return "contenido=" + contenido + ", nivelPrioridad=" + nivelPrioridad + '}';
     }
     
     

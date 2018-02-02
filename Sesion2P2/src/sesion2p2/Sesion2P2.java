@@ -15,8 +15,10 @@ public class Sesion2P2 {
         String nombre, edad, nacionalidad, aniosLab, nivel, usuario, password, index;
         String lugar, descripcion, tipo, detective, estado;
         int contDtcv = 0;
+        String receptor, contenido, nivelPrio;
         ArrayList<detective> lstDetectives = new ArrayList();
         ArrayList<Caso> lstCasos = new ArrayList();
+        ArrayList<Mensaje> lstMensajes = new ArrayList();
         do {
             opcion = JOptionPane.showInputDialog(null, "Menú 1. Administrar Detectives \n 2.LogIn ");
             while (verificaNum(opcion)) {
@@ -237,7 +239,42 @@ public class Sesion2P2 {
                                     }
                                     break;
                                 case 6: 
-                                    
+                                    receptor = JOptionPane.showInputDialog("A que usuario desea enviarle el mensaje?");
+                                    contenido = JOptionPane.showInputDialog("Ingrese mensaje");
+                                    nivelPrio = JOptionPane.showInputDialog("Nivel de Prioridad 1 Alto 2 Medio 3 Bajo");
+                                    k = verificaNum(nivelPrio);
+                                    if (k == false) {
+                                        num = Integer.parseInt(nivelPrio);
+                                        if (num <=3) {
+                                            k = true;
+                                        }
+                                    }
+                                    while (k == true) {
+                                        nivelPrio = JOptionPane.showInputDialog("Ingrese Nivel de Prioridad 1 Alto 2 Medio 3 Bajo");
+                                        p = verificaNum(nivelPrio);
+                                        if (p == false) {
+                                            num = Integer.parseInt(nivelPrio);
+                                            if (num <=3) {
+                                                k = true;
+                                            } else {
+                                                k = false;
+                                            }
+                                        }
+                                    }
+                                    String cod=" ";
+                                    for (detective dtv : lstDetectives) {
+                                        if (dtv.getCodigoDtcv()==codigo) {
+                                             cod = Integer.toString(codigo);
+                                        }
+                                    }
+                                    lstMensajes.add(new Mensaje(cod, receptor, contenido, Integer.parseInt(nivelPrio)));
+                                    break;
+                                case 7: 
+                                    for (Mensaje msj : lstMensajes) {
+                                        if (msj.getReceptor().equals(Integer.toString(codigo))) {
+                                            JOptionPane.showMessageDialog(null, msj.toString());
+                                        }
+                                    }
                                     break;
                             }
                         }
