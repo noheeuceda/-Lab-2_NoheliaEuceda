@@ -13,8 +13,10 @@ public class Sesion2P2 {
         char respuesta = 's', res = 's';
         String opcion, opt;
         String nombre, edad, nacionalidad, aniosLab, nivel, usuario, password, index;
+        String lugar, descripcion, tipo, detective, estado;
         int contDtcv = 0;
         ArrayList<detective> lstDetectives = new ArrayList();
+        ArrayList<Caso> lstCasos = new ArrayList();
         do {
             opcion = JOptionPane.showInputDialog(null, "Menú 1. Administrar Detectives \n 2.LogIn ");
             while (verificaNum(opcion)) {
@@ -118,15 +120,125 @@ public class Sesion2P2 {
                 case 2:
                     usuario = JOptionPane.showInputDialog(null, "Ingrese el usuario");
                     password = JOptionPane.showInputDialog(null, "Ingrese la contraseña del usuario");
-                    int codigo;
+                    int codigo = 0;
                     if (verfUsuario(usuario, password, lstDetectives)) {
                         for (detective d : lstDetectives) {
                             if (d.getUsuario().equals(usuario)) {
                                 codigo = d.getCodigoDtcv();
                             }
                         }
-                        JOptionPane.showMessageDialog(null, "Menú Usuarios: \n 1. Modificar datos \n 2.Listar datos \n 3.Registrar Caso \n 4. Modificar Caso \n 5.Listar Casos \n 6.Enviar Mensaje \n 7.");
-                                
+                        while (res == 's' || res == 'S') {
+                            opt = JOptionPane.showInputDialog(null, "Menú Usuarios: \n 1. Modificar datos \n 2.Listar datos \n 3.Registrar Caso "
+                                    + "\n 4. Modificar Caso \n 5.Listar Casos \n 6.Enviar Mensaje \n 7.Listar mensajes");
+                            while (verificaNum(opt)) {
+                                JOptionPane.showMessageDialog(null, "Numero Invalido, ingrese de nuevo");
+                                opt = JOptionPane.showInputDialog(null, "Menú Usuarios: \n 1. Modificar datos \n 2.Listar datos \n 3.Registrar Caso "
+                                        + "\n 4. Modificar Caso \n 5.Listar Casos \n 6.Enviar Mensaje \n 7.Listar mensajes");
+                            }
+                            boolean p, k;
+                            int num;
+                            switch (Integer.parseInt(opt)) {
+                                case 1:
+                                    int cont = 0;
+                                    for (detective dt : lstDetectives) {
+                                        if (dt.getCodigoDtcv() == codigo) {
+                                            nombre = JOptionPane.showInputDialog(null, "Ingrese Nombre del Detective");
+                                            edad = JOptionPane.showInputDialog(null, "Ingrese edad del Detective");
+                                            while (verificaNum(edad)) {
+                                                JOptionPane.showMessageDialog(null, "Numero Invalido, ingrese de nuevo");
+                                                edad = JOptionPane.showInputDialog(null, "Ingrese edad del detective");
+                                            }
+                                            nacionalidad = JOptionPane.showInputDialog(null, "Ingrese nacionalidad del Detective");
+                                            aniosLab = JOptionPane.showInputDialog(null, "Ingrese Años Laborando del Detective");
+                                            while (verificaNum(aniosLab)) {
+                                                JOptionPane.showMessageDialog(null, "Numero Invalido, ingrese de nuevo");
+                                                aniosLab = JOptionPane.showInputDialog(null, "Ingrese años laborando del detective");
+                                            }
+                                            nivel = JOptionPane.showInputDialog(null, "Ingrese nivel del Detective");
+                                            while (verificaNum(nivel)) {
+                                                JOptionPane.showMessageDialog(null, "Numero Invalido, ingrese de nuevo");
+                                                nivel = JOptionPane.showInputDialog(null, "Ingrese nivel del detective");
+                                            }
+                                            usuario = JOptionPane.showInputDialog(null, "Ingrese usuario del Detective");
+                                            while (verfUser(usuario, lstDetectives)) {
+                                                JOptionPane.showMessageDialog(null, "Usuario ya existente :(, ingrese de nuevo");
+                                                nivel = JOptionPane.showInputDialog(null, "Ingrese usuario del detective");
+                                            }
+                                            password = JOptionPane.showInputDialog(null, "Ingrese password del Detective");
+                                            lstDetectives.set(cont, new detective(nombre, Integer.parseInt(edad), nacionalidad, Integer.parseInt(aniosLab),
+                                                    Integer.parseInt(nivel), usuario, password, codigo));
+                                        }
+                                        cont++;
+                                    }
+                                    break;
+                                case 2:
+                                    for (detective dt : lstDetectives) {
+                                        if (dt.getCodigoDtcv() == codigo) {
+                                            System.out.println(dt.toString());
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    lugar = JOptionPane.showInputDialog("Ingrese lugar de caso");
+                                    descripcion = JOptionPane.showInputDialog("Ingrese descripcion de caso");
+                                    tipo = JOptionPane.showInputDialog("Ingrese tipo de caso \n 1.Homicidio \n 2.Robo"
+                                            + "\n 3.Secuestro \n 4.Violacion");
+                                    k = verificaNum(tipo);
+                                    if (k == false) {
+                                        num = Integer.parseInt(tipo);
+                                        if (num <=4) {
+                                            k = true;
+                                        }
+                                    }
+                                    while (k == true) {
+                                        tipo = JOptionPane.showInputDialog("Ingrese tipo de caso \n 1.Homicidio \n 2.Robo"
+                                            + "\n 3.Secuestro \n 4.Violacion");
+                                        p = verificaNum(tipo);
+                                        if (p == false) {
+                                            num = Integer.parseInt(tipo);
+                                            if (num <=4) {
+                                                k = true;
+                                            } else {
+                                                k = false;
+                                            }
+                                        }
+                                    }
+                                    estado = JOptionPane.showInputDialog("Ingrese estado de caso \n 1. En Proceso \n 2.Resuelto");
+                                    k = verificaNum(estado);
+                                    if (k == false) {
+                                        num = Integer.parseInt(estado);
+                                        if (num <=2) {
+                                            k = true;
+                                        }
+                                    }
+                                    while (k == true) {
+                                        estado = JOptionPane.showInputDialog("Ingrese estado de caso \n 1. En Proceso \n 2.Resuelto");
+                                        p = verificaNum(estado);
+                                        if (p == false) {
+                                            num = Integer.parseInt(estado);
+                                            if (num <=2) {
+                                                k = true;
+                                            } else {
+                                                k = false;
+                                            }
+                                        }
+                                    }
+                                    lstCasos.add(new Caso(lugar, descripcion, Integer.parseInt(tipo), codigo, Integer.parseInt(estado)));
+
+                                    break;
+                                case 4: 
+                                    
+                                    break;
+                                case 5:
+                                    for (Caso cso : lstCasos) {
+                                        if (cso.getCodDetective()==codigo) {
+                                            
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Usuario Invalido");
                     }

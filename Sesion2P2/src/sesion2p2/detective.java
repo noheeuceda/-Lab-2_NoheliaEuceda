@@ -13,8 +13,6 @@ public class detective {
     private String nacionalidad;
     private int aniosLab;
     private int nivel;
-    private ArrayList<String[][]> casos = new ArrayList();
-    private ArrayList<String[][]> buzon = new ArrayList();
     private String usuario;
     private String password;
     private int codigoDtcv;
@@ -80,22 +78,6 @@ public class detective {
         this.nivel = nivel;
     }
 
-    public ArrayList<String[][]> getCasos() {
-        return casos;
-    }
-
-    public void setCasos(ArrayList<String[][]> casos) {
-        this.casos = casos;
-    }
-
-    public ArrayList<String[][]> getBuzon() {
-        return buzon;
-    }
-
-    public void setBuzon(ArrayList<String[][]> buzon) {
-        this.buzon = buzon;
-    }
-
     public String getUsuario() {
         return usuario;
     }
@@ -114,8 +96,10 @@ public class detective {
 
     @Override
     public String toString() {
-        return "detective{" + "nombre=" + nombre + ", edad=" + edad + ", nacionalidad=" + nacionalidad + ", aniosLab=" + aniosLab + ", nivel=" + nivel + ", casos=" + casos + ", buzon=" + buzon + ", usuario=" + usuario + ", password=" + password + '}';
+        return "detective{" + "nombre=" + nombre + ", edad=" + edad + ", nacionalidad=" + nacionalidad + ", aniosLab=" + aniosLab + ", nivel=" + nivel + ", usuario=" + usuario + ", password=" + password + ", codigoDtcv=" + codigoDtcv + '}';
     }
+
+    
     
     
 }
